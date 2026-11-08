@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useAnimationControls } from 'motion/react'
 import { useEffect, useState, type ReactNode } from 'react'
 import art from '../../content/art.json'
 import { dict } from '../../content/dict'
+import { achievements } from '../../content/profile'
 import { updates } from '../../content/updates'
 import { useCalm } from '../../lib/calm'
 import { useCodeforces } from '../../lib/codeforces'
@@ -39,32 +40,36 @@ function TitleBar({ children, h }: { children: ReactNode; h: number }) {
   )
 }
 
-/** Bell card "Success!" → live Codeforces stats; the bell rings to the next one, auto-cycles otherwise. */
+/** Bell card "Success!" → achievements and live Codeforces stats; the bell rings to the next one, auto-cycles otherwise. */
 export function BellCard() {
   const { t } = useI18n()
   const calm = useCalm()
   const bell = useAnimationControls()
   const [index, setIndex] = useState(0)
   const [hold, setHold] = useState(false)
-  const { user, failed } = useCodeforces()
-  const items = user
-    ? [
-        { id: 'rank', result: `${user.rank[0].toUpperCase()}${user.rank.slice(1)}!`, title: t(dict.codeforces.rank) },
-        { id: 'rating', result: String(user.rating), title: t(dict.codeforces.rating) },
-        { id: 'max', result: String(user.maxRating), title: t(dict.codeforces.max) },
-      ]
-    : [{ id: 'wait', result: failed ? '—' : '· · ·', title: failed ? t(dict.codeforces.unavailable) : t(dict.achievements.label) }]
+  const { user } = useCodeforces()
+  const items = [
+    ...achievements.map((a) => ({ id: a.id, result: t(a.result), title: `${t(a.title)} · ${a.year}` })),
+    ...(user
+      ? [
+          { id: 'rank', result: `${user.rank[0].toUpperCase()}${user.rank.slice(1)}!`, title: `Codeforces · ${t(dict.codeforces.rank)}` },
+          { id: 'rating', result: String(user.rating), title: `Codeforces · ${t(dict.codeforces.rating)}` },
+          { id: 'max', result: String(user.maxRating), title: `Codeforces · ${t(dict.codeforces.max)}` },
+        ]
+      : []),
+  ]
   const item = items[index % items.length]
   const result = item.result
+  const count = items.length
 
   useEffect(() => {
     if (hold || calm) return
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % 3), 4500)
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % count), 4500)
     return () => window.clearInterval(id)
-  }, [hold, calm])
+  }, [hold, calm, count])
 
   const next = () => {
-    setIndex((i) => (i + 1) % 3)
+    setIndex((i) => (i + 1) % count)
     if (!calm) bell.start({ rotate: [0, -18, 15, -10, 6, -2, 0], transition: { duration: 0.8, ease: 'easeOut' } })
   }
 
@@ -97,7 +102,7 @@ export function BellCard() {
           {result}
         </p>
         <p className="m-0 max-w-full truncate font-sans" style={{ fontSize: u(5.2), color: '#a8c4b6' }}>
-          Codeforces · {item.title}
+          {item.title}
         </p>
       </div>
     </section>

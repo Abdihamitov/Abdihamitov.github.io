@@ -6,18 +6,18 @@ export type Locale = (typeof locales)[number];
 export const dict = {
   header: {
     slogan: {
-      ru: "задачи, рейтинг и опенинги",
-      en: "problems, rating and openings",
+      ru: "контесты, серверы и опенинги",
+      en: "contests, servers and openings",
     },
   },
   about: {
     short: {
-      ru: "Адель, Бишкек. Спортивное программирование и Codeforces.",
-      en: "Adel from Bishkek. Competitive programming and Codeforces.",
+      ru: "Адель, Бишкек. Backend и спортивное программирование.",
+      en: "Adel from Bishkek. Backend and competitive programming.",
     },
     body: {
-      ru: "Привет! Я Адель из Бишкека, занимаюсь спортивным программированием. Рейтинг с Codeforces на этой странице обновляется сам, а написать мне проще всего в Telegram.",
-      en: "Hi! I'm Adel from Bishkek, and I do competitive programming. The Codeforces rating on this page updates by itself, and Telegram is the easiest way to reach me.",
+      ru: "Привет! Я Адель из Бишкека, backend-разработчик. Пишу на Python, Go и C++, занимаюсь спортивным программированием: участвовал в ICPC Kyrgyzstan Regional, занял 1 место в своём регионе на RuCode и 3 место на Startup Expo Osh. Написать мне проще всего в Telegram.",
+      en: "Hi! I'm Adel from Bishkek, a backend developer. I write Python, Go and C++ and do competitive programming: I took part in the ICPC Kyrgyzstan Regional, placed 1st in my region at RuCode and 3rd at Startup Expo Osh. Telegram is the easiest way to reach me.",
     },
     note: {
       ru: "сайт собран на основе борда hvano",
@@ -39,7 +39,9 @@ export const dict = {
     title: { ru: "стек", en: "stack" },
     open: { ru: "весь стек", en: "full stack list" },
     lang: { ru: "языки", en: "lang" },
-    tools: { ru: "тулзы", en: "tools" },
+    web: { ru: "веб", en: "web" },
+    data: { ru: "данные", en: "data" },
+    infra: { ru: "инфра", en: "infra" },
   },
   codeforces: {
     open: { ru: "профиль на codeforces", en: "codeforces profile" },
@@ -55,7 +57,7 @@ export const dict = {
     off: { ru: "Выкл", en: "Off" },
   },
   achievements: {
-    label: { ru: "Codeforces", en: "Codeforces" },
+    label: { ru: "Достижения", en: "Achievements" },
     next: { ru: "дальше", en: "next" },
   },
   system: {

@@ -197,14 +197,8 @@ export function SongsCard() {
   const { t } = useI18n()
   const { setOpen } = usePlayerDialog()
   const { track, time, duration, select } = usePlayer()
-  const tags = [
-    { x: 3, y: 140, w: 26, pill: false },
-    { x: 42, y: 142, w: 38, pill: true },
-    { x: 35, y: 158, w: 26, pill: false },
-    { x: 3, y: 175, w: 26, pill: false },
-    { x: 42, y: 177, w: 38, pill: true },
-    { x: 35, y: 192, w: 26, pill: false },
-  ]
+  // Two columns of alternating chips, one slot per playlist track.
+  const tags = playlist.map((_, i) => ({ x: i % 2 ? 43 : 3, y: 140 + Math.floor(i / 2) * 17, w: 36, pill: i % 2 === 1 }))
   // Lyric line chosen proportionally to playback position: there are no timecodes.
   const lines = track.lyrics
   const at = lines.length > 0 && duration > 0 ? Math.min(lines.length - 1, Math.floor((time / duration) * lines.length)) : 0

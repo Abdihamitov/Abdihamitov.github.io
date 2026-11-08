@@ -1,5 +1,5 @@
 /**
- * Плейлист плеера: опенинги, эндинги и саундтрек «Провожающей в последний путь Фрирен».
+ * Плейлист плеера: опенинги, эндинги и саундтрек «Фрирен», плюс любимые треки.
  *
  * Источник звука — официальные загрузки исполнителей на YouTube (iframe API),
  * поэтому просмотры идут авторам. Тексты песен защищены авторским правом и
@@ -23,6 +23,8 @@ export const playlist: Track[] = [
   { id: "lulu", title: "lulu.", artist: "Mrs. GREEN APPLE", youtubeId: "MjeiIal1ZR0", lyrics: [] },
   { id: "story", title: "The Story of Us", artist: "milet", youtubeId: "_1NbGbYG4qg", lyrics: [] },
   { id: "zoltraak", title: "Zoltraak", artist: "Evan Call", youtubeId: "7S3eJG-8v_E", lyrics: [] },
+  { id: "bluebird", title: "ブルーバード", artist: "いきものがかり", youtubeId: "KpsJWFuVTdI", lyrics: [] },
+  { id: "staywithme", title: "Stay With Me", artist: "松原みき", youtubeId: "nuU2YHtxMik", lyrics: [] },
 ];
 
 /** Прямая ссылка на клип. */
