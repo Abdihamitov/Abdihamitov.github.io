@@ -5,9 +5,6 @@
 Портфолио-борд с Фрирен. Рейтинг и ранг подгружаются с Codeforces, в плеере
 официальные клипы с YouTube.
 
-Основа сайта: [hvanox.github.io](https://github.com/hvanox/hvanox.github.io) от hvano,
-по эдиту reathaa. Авторы артов подписаны на сайте, ссылки на источники лежат в
-`src/content/art.json`.
 
 ## Разработка
 
